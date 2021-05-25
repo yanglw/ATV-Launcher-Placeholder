@@ -1,0 +1,44 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId APPLICATION_ID
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        buildConfigField "String", "TARGET_PACKAGE_NAME", "\"$TARGET_PACKAGE_NAME\""
+    }
+    signingConfigs {
+        release {
+            if (hasProperty("SIGNING_STORE_FILE")) {
+                storeFile file(SIGNING_STORE_FILE)
+                storePassword SIGNING_STORE_PASSWORD
+                keyAlias SIGNING_KEY_ALIAS
+                keyPassword SIGNING_KEY_PASSWORD
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
+        }
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
