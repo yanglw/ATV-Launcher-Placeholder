@@ -42,3 +42,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_7
     }
 }
+
+android.applicationVariants.all { variant ->
+    variant.outputs.all { output ->
+        outputFileName = "${variant.applicationId}.apk"
+    }
+}
