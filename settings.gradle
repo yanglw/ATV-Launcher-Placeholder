@@ -1,2 +1,3 @@
+rootProject.name = "ATV-Launcher-Placeholder"
+
 include ':app'
-rootProject.name = "Mars"
