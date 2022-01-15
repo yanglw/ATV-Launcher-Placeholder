@@ -14,6 +14,7 @@ android {
         versionName "1.0"
 
         buildConfigField "String", "TARGET_PACKAGE_NAME", "\"$TARGET_PACKAGE_NAME\""
+        manifestPlaceholders = [TARGET_PACKAGE_NAME: TARGET_PACKAGE_NAME]
     }
     signingConfigs {
         release {
